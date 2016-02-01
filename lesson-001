@@ -1,0 +1,130 @@
+enter linux system on night of 04/02/2015
+
+ls: list of file in current directory, include children directory
+ls /bin: list of file in /bin directory or any directory
+ls -l: list of file with detail information in current directory
+ls -l /etc/bin: list of file with detail information in /etc/bin directory
+ls -a: list of file in current directory, include hide file (hide file start with dot character)
+
+less <file-name>: show content of file
+	Page Up | b: next page
+	Page Down | space: prev page
+	g: go to end of file
+	1g: go to start of file
+	/characters: find ahead character
+	n: repeat prev find
+	h: show help
+	q: quit
+
+file <name-of-file>: show type of file
+
+/: root directory where file system begin. in most case it only contains sub directories
+/boot: where is Linux kernel an boot loader are kept. the kernal is a file called vmlinuz
+/etc: contains configuration files for system
+	/etc/passwd: passwd file contains essential information for each user. Is is here that usrs are defined
+	/etc/fstab: contains divice table that get mout when system boots
+	/etc/host: lists name network and ip address are intrinsically with system
+	/etc/init.d: this directory contains scripts that start system services at boots time
+/bin, /usr/bin: contains most program for system
+	/bin have essetial programs that the system requires to operate.
+	/usr/bin: contains application for user
+/sbin, /usr/sbin: contains system manager program, mostly used by super user
+/usr: contains variety of thing that support by user application
+	/usr/share/X11: support x window system file
+	/usr/share/dict: spelling dictionary
+	/usr/share/doc: various documentation file in variaty of formats
+	/usr/share/man: man page
+	/usr/src: source code files. if you installd source code kernel packages, you will find all Linux kernel here
+/usr/local: used to install software and other file to use on local machine. that software not a part of distro. also /usr/local/bin
+/var: contains changed file when system is running
+	/var/log: contains log file. there are updated when system is running
+	/var/spool: conains queue file fo some process, example as email, print task
+	/lib: shared library
+/home: where user keep them file
+/root: directory of super user
+/tmp: where application can write template file
+/dev: contains divices. in linux can read and write with device same as file
+	/dev/sda: fist hdd
+/proc: contains peeps hold into kernel
+	/proc/cpuinfo: information about cpu
+/media, /mnt: mouted devices
+
+wildcards:
+	*: matches with any characters
+	?: matches with one character
+	[characters]: matches any character that is member of the set characters
+		[:alnum:]: alpanumeric characters
+		[:alpha:]: alpabetic characters
+		[:digit]: numerals
+		[:upper:]: uppercase alphabetic characters
+		[:lower:]: lowercase alphabteic characters
+	[!characters]: matches any character that is not a member of the set characters
+
+cp: copy file, directory
+	cp file-1 file-2: copy contents of file-1 to file-2. if file-2 is not exists, it is created. if not, silently overwritten with the contents of file-1
+	copy -i file-1 file-2: like above, but user will get warning if file-2 is exists
+	cp file-1 dir-1: copy file-1 to file-1 in dir-1
+	cp -R dir-1 dir-2: copy contents of dir-1 directory to dir-2 directory. if dir-2 directory is not exists, it is created. if not, create dir-1 directory in dir-2 directory
+
+mv: move or rename file, directory. params like cp command	
+
+rm: delete file, directory
+	rm file-1 file-2: delete file-1, file-2
+	rm -i file-1 file-2: like above, but user will get warning before file has been deleted
+	rm -r dir-1 dir-2: dir-1, dir-2 is deleted with all of their content
+
+mkdir: create directory
+	mkdir dir-1: create dir-1 directory
+
+command type:
+	executable program: all thing can be execute as machine code, scripts
+	shell builtins: like cd
+	shell function: shell script
+	alias: other name for command
+
+type: show type of command
+	type <command>: show type of command
+
+which: show location of command. it only affect with executable programs
+	which ls: 
+
+help: show systax, document for command
+	help <command>: show syntax, document for command
+	<command> --help: show help for command. it only affected if command suport --help
+
+man: almost executable program intended for each command line formal document called man
+	man <command>: show document for command
+
+>: redirect output to output
+	ls > file-index.txt: get list of file name and overwrite to file-index.txt
+	ls >> file-index.txt: get list of file name and join to end file-inex.txt
+
+<: get input from source
+	sort < file-index.txt: get content of file-index.txt and sort it
+	sort < file-index.txt > file-index-1.txt: get content of file-index.txt, sort it, write to file-index-1.txt
+
+|: connect multiple command together
+	ls -l | less: get list of file with more information and open them in less
+
+echo: print text
+	echo this is a test: print to terminal text 'this is a test'
+	echo $((1 + 1)): print to terminal text '2'
+	echo font-{a,b,c}-back: print to terminal text 'font-a-back font-b-back font-c-back'
+	echo number-{1..3}: print to terminal text 'number-1 number-2 number-3'
+
+chmod: change file, directory permision
+	chmod 777: all user can read, write, execute file, access directory
+chown: change own of file, directory. only affected with super user
+	chown user-name file-1: change own of file-1 to user-name
+chgrp: change own group
+	chgrp new-group file-1: change own group of file-1 to new-group
+
+ps: list the processes running on the system
+kill: send a message to one or more process to stop them
+	kill <process-id>: kill process with process identity
+	kill %<job-order>: kill thead with job order	
+jobs: list the processes of only you
+bg: put a process into backgroud
+fg: put a process into forground
+
+continuous point: http://linuxcommand.org/lc3_wss0080.php
